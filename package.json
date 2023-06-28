@@ -8,13 +8,20 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "latest"
+  },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "WATCHPACK_POLLING=true react-scripts start",
+    "container": "docker-compose up",
     "build": "react-scripts build",
+    "buildc": "docker build -t bob.egan:prod .",
+    "prod": "docker run -p 8080:80 bob.egan:prod",
     "test": "react-scripts test",
+    "testc": "docker run -it bob.egan:frontend npm run test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
